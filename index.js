@@ -1,21 +1,23 @@
-const githubURL = 'https://api.github.com';
+const baseURL = 'https://api.github.com';
 const user = '<sachinm78>';
 
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '';
+  return '407f08cad63b0adcff680a29112781235b1bdee1';
 }
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/js-ajax-fetch-lab';
-  const url = `${githubURL}/repos/${repo}/forks`;
+  const url = `${baseURL}/repos/${repo}/forks`;
   fetch(url, {
     method: 'POST',
     headers: {
       Authorization: `token ${getToken()}`
     }
-  }).then(res => res.json()).then(json => showResults(json));
+  })
+    .then(res => res.json())
+    .then(json => showResults(json));
 }
 
 function showResults(json) {
@@ -24,10 +26,9 @@ function showResults(json) {
   }</a>`;
 }
 
-
 function createIssue() {
   const repo = `${user}/js-ajax-fetch-lab`;
-  const url = `${githubURL}/repos/${repo}/issues`;
+  const url = `${baseURL}/repos/${repo}/issues`;
   const postData = {
     title: document.getElementById('title').value,
     body: document.getElementById('body').value
@@ -39,15 +40,19 @@ function createIssue() {
     headers: {
       Authorization: `token ${getToken()}`
     }
-  }).then(res => res.json()).then(json => getIssues());
+  })
+    .then(res => res.json())
+    .then(json => getIssues());
 }
 
 function getIssues() {
   const repo = `${user}/js-ajax-fetch-lab`;
-  const url = `${githubURL}/repos/${repo}/issues`;
+  const url = `${baseURL}/repos/${repo}/issues`;
   fetch(url, {
     headers: {
       Authorization: `token ${getToken()}`
     }
-  }).then(res => res.json()).then(json => console.log(json));
+  })
+    .then(res => res.json())
+    .then(json => console.log(json));
 }
