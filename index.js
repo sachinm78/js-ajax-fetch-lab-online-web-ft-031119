@@ -1,6 +1,6 @@
 const baseURL = 'https://api.github.com';
 // change to pass all tests
-const user = '<sachinm78>';
+const user = 'sachinm78';
 
 function getToken() {
   //change to your token to run in browser, but set
